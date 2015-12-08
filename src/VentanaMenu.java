@@ -1,3 +1,6 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -5,7 +8,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 
-public class VentanaMenu {
+public class VentanaMenu implements ActionListener{
 	JFrame ventana; //Definir la ventana
 	JMenu opcion1, opcion2,Sopcion1,Sopcion2,Sopcion3,Sopcion4; //Opciones del Menú
 	JMenuItem sub1,sub2; //Item del menú
@@ -37,6 +40,14 @@ public class VentanaMenu {
 		Sopcion2.add(sub1);
 		Sopcion2.add(sub2);
 		
+		Sopcion1.addActionListener(this);
+		Sopcion2.addActionListener(this);
+		Sopcion3.addActionListener(this);
+		Sopcion4.addActionListener(this);
+		
+		sub1.addActionListener(this);
+		sub2.addActionListener(this);
+		
 	}
 	
 	public void crearVentana(){
@@ -51,6 +62,15 @@ public class VentanaMenu {
 	public VentanaMenu(){
 		crearMenu();
 		crearVentana();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()== sub1){
+			//System.out.println("Seleciono X");
+			ventana.setSize(500, 500);
+		}
 	}
 
 }
